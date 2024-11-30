@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace CODEIQBV\Kolmisoft\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class KolmisoftCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-kolmisoft';
 
     public $description = 'My command';
 

@@ -6,6 +6,9 @@ use CODEIQBV\Kolmisoft\Exceptions\ApiException;
 
 class Balance extends BaseApi
 {
+    /**
+     * @throws ApiException
+     */
     public function get($username, $currency = null, $raw = false)
     {
         $params = [
@@ -16,7 +19,10 @@ class Balance extends BaseApi
             $params['currency'] = $currency;
         }
 
-        $response = $this->sendRequest('/api/user_balance_get', $params, $raw);
+        // Define the hash keys in the expected order
+        $hashKeys = ['username', 'currency'];
+
+        $response = $this->sendRequest('/api/user_balance_get', $params, $raw, $hashKeys);
 
         if ($raw) {
             return $response;
@@ -26,7 +32,6 @@ class Balance extends BaseApi
             $this->handleError($response->error);
         }
 
-        // Return the balance directly as a float
         return (float) $response->balance;
     }
 
@@ -65,7 +70,9 @@ class Balance extends BaseApi
             $params['currency'] = $currency;
         }
 
-        $response = $this->sendRequest('/api/user_simple_balance_get', $params, $raw);
+        $hashKeys = ['id', 'currency']; // Ensure 'currency' is conditionally included
+
+        $response = $this->sendRequest('/api/user_simple_balance_get', $params, $raw, $hashKeys);
 
         if ($raw) {
             return $response;
@@ -75,7 +82,6 @@ class Balance extends BaseApi
             $this->handleError($response->error);
         }
 
-        // Return the balance directly as a float
         return (float) $response;
     }
 
@@ -112,4 +118,4 @@ class Balance extends BaseApi
                 throw new ApiException("An unknown error occurred: $error");
         }
     }
-} 
+}

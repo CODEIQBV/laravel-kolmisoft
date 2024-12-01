@@ -24,20 +24,11 @@ class BaseApi
             $responseBody = $response->body();
             $responseHeaders = $response->headers();
 
-            // Log detailed error information
-            \Log::error('API Request Failed', [
-                'status' => $statusCode,
-                'response' => $responseBody,
-                'headers' => $responseHeaders,
-            ]);
 
             throw new ApiException("Failed to connect to the API. Status: $statusCode, Response: $responseBody");
         }
 
         $responseBody = $response->body();
-
-        // Log the raw response for debugging
-        \Log::debug('API Response: ' . $responseBody);
 
         // Check if the response is valid XML
         libxml_use_internal_errors(true);
@@ -46,7 +37,6 @@ class BaseApi
         if ($xml === false) {
             $errors = libxml_get_errors();
             libxml_clear_errors();
-            \Log::error('XML Parsing Errors', ['errors' => $errors]);
             throw new ApiException("Failed to parse API response. Raw response: $responseBody");
         }
 
@@ -74,4 +64,4 @@ class BaseApi
         // Calculate SHA1 hash of hash_string
         return sha1($hashString);
     }
-} 
+}

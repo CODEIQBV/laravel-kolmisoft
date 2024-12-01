@@ -64,13 +64,15 @@ class BaseApi
      * @param array $hashKeys Keys to include in hash
      * @return string
      */
-    protected function generateHash(array $params, array $hashKeys): string
+    protected function generateHash(array $params, ?array $hashKeys = []): string
     {
         $hashString = '';
-
-        foreach ($hashKeys as $key) {
-            if (isset($params[$key])) {
-                $hashString .= $params[$key];
+        
+        if ($hashKeys) {
+            foreach ($hashKeys as $key) {
+                if (isset($params[$key])) {
+                    $hashString .= $params[$key];
+                }
             }
         }
 

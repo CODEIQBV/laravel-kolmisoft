@@ -40,7 +40,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "CODEIQBV\\Kolmisoft\\Tests\\": "tests/",
+            "Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },

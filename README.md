@@ -1,18 +1,9 @@
-
 # Integration between Laravel and Kolmisoft MOR
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/codeiqbv/laravel-kolmisoft.svg?style=flat-square)](https://packagist.org/packages/codeiqbv/laravel-kolmisoft)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/codeiqbv/laravel-kolmisoft/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/codeiqbv/laravel-kolmisoft/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/codeiqbv/laravel-kolmisoft/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/codeiqbv/laravel-kolmisoft/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/codeiqbv/laravel-kolmisoft.svg?style=flat-square)](https://packagist.org/packages/codeiqbv/laravel-kolmisoft)
 
 This package integrates Laravel applications with Kolmisoft MOR, providing a simple and flexible way to interact with MOR's APIs.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-kolmisoft.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-kolmisoft)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
 ## Installation
 

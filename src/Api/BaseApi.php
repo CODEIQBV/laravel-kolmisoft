@@ -51,33 +51,27 @@ class BaseApi
         }
 
         if ($raw) {
-            return $xml;
+            return $xml; // Return the SimpleXMLElement directly
         }
 
         return $xml;
     }
 
-    /**
-     * Generate hash for API request
-     *
-     * @param array $params Request parameters
-     * @param array $hashKeys Keys to include in hash
-     * @return string
-     */
-    protected function generateHash(array $params, ?array $hashKeys = []): string
+    protected function generateHash($params, $hashKeys)
     {
+        // Concatenate all values you want to send into a single string
         $hashString = '';
-        
-        if ($hashKeys) {
-            foreach ($hashKeys as $key) {
-                if (isset($params[$key])) {
-                    $hashString .= $params[$key];
-                }
+
+        foreach ($hashKeys as $key) {
+            if (isset($params[$key])) {
+                $hashString .= $params[$key];
             }
         }
 
+        // Add API_Secret_Key to the end of hash_string
         $hashString .= config('kolmisoft.auth_key');
 
+        // Calculate SHA1 hash of hash_string
         return sha1($hashString);
     }
 } 

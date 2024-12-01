@@ -6,18 +6,27 @@ use Exception;
 
 class ApiException extends Exception
 {
-    public static function incorrectHash()
+    /**
+     * @return self
+     */
+    public static function incorrectHash(): self
     {
-        return new static("Incorrect hash provided.");
+        return new self("Incorrect hash provided.");
     }
 
-    public static function userNotFound()
+    /**
+     * @return self
+     */
+    public static function userNotFound(): self
     {
-        return new static("User was not found.");
+        return new self("User was not found.");
     }
 
-    public static function featureDisabled()
+    /**
+     * @return self
+     */
+    public static function featureDisabled(): self
     {
-        return new static("Feature is disabled.");
+        return new self("Feature is disabled.");
     }
 } 

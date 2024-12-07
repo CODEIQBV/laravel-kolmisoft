@@ -20,9 +20,28 @@ class User extends BaseApi
         $params['u'] = config('kolmisoft.username');
         $params['p'] = config('kolmisoft.password');
 
+        // Build the hash string with the correct order of included parameters
+        $hashParams = [
+            $params['email'],
+            $params['id'],
+            $params['device_type'],
+            $params['username'],
+            $params['first_name'] ?? '', // Include empty value if not provided
+            $params['last_name'] ?? '',
+            $params['caller_id'] ?? '',
+            $params['state'] ?? '',
+            $params['device_location_id'] ?? '',
+            config('kolmisoft.secret_key') // Add API Secret Key at the end
+        ];
+
+        // Concatenate the hash string and generate the hash
+        $hashString = implode('', $hashParams);
+        $params['hash'] = sha1($hashString);
+
         // Specify the keys to include in the hash
         $hashKeys = ['email', 'id', 'device_type', 'username'];
 
+        // Send the request
         $response = $this->sendRequest('/api/user_register', $params, $raw, $hashKeys);
 
         if ($raw) {
